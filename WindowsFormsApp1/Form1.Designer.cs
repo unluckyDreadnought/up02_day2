@@ -33,15 +33,17 @@ namespace WindowsFormsApp1
             this.import = new System.Windows.Forms.Button();
             this.exit = new System.Windows.Forms.Button();
             this.tables = new System.Windows.Forms.ComboBox();
+            this.rowImportResults = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // repair
             // 
             this.repair.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.repair.Location = new System.Drawing.Point(119, 24);
+            this.repair.Location = new System.Drawing.Point(187, 24);
             this.repair.Name = "repair";
-            this.repair.Size = new System.Drawing.Size(188, 35);
+            this.repair.Size = new System.Drawing.Size(208, 51);
             this.repair.TabIndex = 0;
             this.repair.Text = "Восстановить";
             this.repair.UseVisualStyleBackColor = true;
@@ -49,7 +51,7 @@ namespace WindowsFormsApp1
             // 
             // import
             // 
-            this.import.Location = new System.Drawing.Point(27, 98);
+            this.import.Location = new System.Drawing.Point(12, 100);
             this.import.Name = "import";
             this.import.Size = new System.Drawing.Size(125, 38);
             this.import.TabIndex = 0;
@@ -60,7 +62,7 @@ namespace WindowsFormsApp1
             // exit
             // 
             this.exit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.exit.Location = new System.Drawing.Point(27, 233);
+            this.exit.Location = new System.Drawing.Point(27, 352);
             this.exit.Name = "exit";
             this.exit.Size = new System.Drawing.Size(136, 42);
             this.exit.TabIndex = 0;
@@ -74,16 +76,41 @@ namespace WindowsFormsApp1
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tables.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tables.FormattingEnabled = true;
-            this.tables.Location = new System.Drawing.Point(168, 99);
+            this.tables.Location = new System.Drawing.Point(153, 101);
             this.tables.Name = "tables";
-            this.tables.Size = new System.Drawing.Size(254, 37);
+            this.tables.Size = new System.Drawing.Size(449, 37);
             this.tables.TabIndex = 1;
+            // 
+            // rowImportResults
+            // 
+            this.rowImportResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rowImportResults.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.rowImportResults.FormattingEnabled = true;
+            this.rowImportResults.ItemHeight = 25;
+            this.rowImportResults.Location = new System.Drawing.Point(12, 145);
+            this.rowImportResults.Name = "rowImportResults";
+            this.rowImportResults.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.rowImportResults.Size = new System.Drawing.Size(590, 179);
+            this.rowImportResults.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(204, 352);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 25);
+            this.label1.TabIndex = 3;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(443, 287);
+            this.ClientSize = new System.Drawing.Size(614, 406);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.rowImportResults);
             this.Controls.Add(this.tables);
             this.Controls.Add(this.exit);
             this.Controls.Add(this.import);
@@ -94,6 +121,7 @@ namespace WindowsFormsApp1
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -103,6 +131,8 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button import;
         private System.Windows.Forms.Button exit;
         private System.Windows.Forms.ComboBox tables;
+        private System.Windows.Forms.ListBox rowImportResults;
+        private System.Windows.Forms.Label label1;
     }
 }
 

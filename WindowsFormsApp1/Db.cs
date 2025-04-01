@@ -118,5 +118,24 @@ namespace WindowsFormsApp1
             con.Close();
             return "";
         }
+
+        public static int ImportData(string table, params string[] values)
+        {
+            MySqlConnection con = GetConnection();
+            if (con == null) return -1;
+            string query = $"insert into {table} value ({string.Join(",", values)});";
+            MySqlCommand com = new MySqlCommand(query, con);
+            int n = 0;
+            try
+            {
+                n = com.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                return -1;
+            }
+            con.Close();
+            return n;
+        }
     }
 }
