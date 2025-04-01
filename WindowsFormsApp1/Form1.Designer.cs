@@ -32,17 +32,18 @@ namespace WindowsFormsApp1
             this.repair = new System.Windows.Forms.Button();
             this.import = new System.Windows.Forms.Button();
             this.exit = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.tables = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // repair
             // 
-            this.repair.Location = new System.Drawing.Point(110, 24);
+            this.repair.Location = new System.Drawing.Point(119, 24);
             this.repair.Name = "repair";
             this.repair.Size = new System.Drawing.Size(188, 35);
             this.repair.TabIndex = 0;
             this.repair.Text = "Восстановить";
             this.repair.UseVisualStyleBackColor = true;
+            this.repair.Click += new System.EventHandler(this.repair_Click);
             // 
             // import
             // 
@@ -52,6 +53,7 @@ namespace WindowsFormsApp1
             this.import.TabIndex = 0;
             this.import.Text = "Импорт";
             this.import.UseVisualStyleBackColor = true;
+            this.import.Click += new System.EventHandler(this.import_Click);
             // 
             // exit
             // 
@@ -61,22 +63,23 @@ namespace WindowsFormsApp1
             this.exit.TabIndex = 0;
             this.exit.Text = "Выход";
             this.exit.UseVisualStyleBackColor = true;
+            this.exit.Click += new System.EventHandler(this.exit_Click);
             // 
-            // comboBox1
+            // tables
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(160, 99);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(262, 32);
-            this.comboBox1.TabIndex = 1;
+            this.tables.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tables.FormattingEnabled = true;
+            this.tables.Location = new System.Drawing.Point(160, 99);
+            this.tables.Name = "tables";
+            this.tables.Size = new System.Drawing.Size(262, 32);
+            this.tables.TabIndex = 1;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(443, 287);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.tables);
             this.Controls.Add(this.exit);
             this.Controls.Add(this.import);
             this.Controls.Add(this.repair);
@@ -84,6 +87,7 @@ namespace WindowsFormsApp1
             this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
         }
@@ -93,7 +97,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button repair;
         private System.Windows.Forms.Button import;
         private System.Windows.Forms.Button exit;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox tables;
     }
 }
 
