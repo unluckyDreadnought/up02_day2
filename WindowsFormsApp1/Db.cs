@@ -13,8 +13,10 @@ namespace WindowsFormsApp1
     {
         private static string conStr = "host=localhost;user=root;password=root;database=project_office";
 
-        private static MySqlConnection GetConnection()
+        private static MySqlConnection GetConnection(bool dbNeeded = true)
         {
+            string noDbSettings = string.Join(";", conStr.Split(';').Where(str => str[0] != 'd').ToArray());
+            conStr = (dbNeeded) ? $"{noDbSettings};database=project_office" : noDbSettings;
             MySqlConnection con = new MySqlConnection(conStr);
             try
             {
@@ -72,10 +74,15 @@ namespace WindowsFormsApp1
             string query = "show tables;";
             MySqlCommand com = new MySqlCommand(query, con);
             DataTable dt = new DataTable();
-            using (var rdr = com.ExecuteReader())
+            try
             {
-                dt.Load(rdr);
+                using (var rdr = com.ExecuteReader())
+                {
+                    dt.Load(rdr);
+                }
+                con.Close();
             }
+            catch (Exception) {; }
             return DataTableToStringArray(dt);
         }
 
@@ -90,16 +97,26 @@ namespace WindowsFormsApp1
             {
                 dt.Load(rdr);
             }
+            con.Close();
             return DataTableToMultyRowStrArray(dt);
         }
 
-        public static void RepairDb()
+        public static string RepairDb()
         {
-            MySqlConnection con = GetConnection();
-            if (con == null) return;
-            string query = Resources.DB_STRUCTURE_DUMP;
+            MySqlConnection con = GetConnection(false);
+            if (con == null) return null;
+            string query = Resources.db_structure_empty_dump_v3;
             MySqlCommand com = new MySqlCommand(query, con);
-            
+            try
+            {
+                com.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+            con.Close();
+            return "";
         }
     }
 }

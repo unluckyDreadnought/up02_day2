@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+using System.IO;
 using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Properties;
 
 namespace WindowsFormsApp1
 {
@@ -32,6 +30,8 @@ namespace WindowsFormsApp1
         private void import_Click(object sender, EventArgs e)
         {
             if (tables.SelectedIndex == -1) return;
+            string[][] tblDesc = Db.GetTableDescription(tables.SelectedItem.ToString());
+            ;
         }
 
         private void exit_Click(object sender, EventArgs e)
@@ -41,7 +41,18 @@ namespace WindowsFormsApp1
 
         private void repair_Click(object sender, EventArgs e)
         {
-
+            string res = Db.RepairDb();
+            if (res == null) {
+                MessageBox.Show("Не удалось подключиться к БД", "Ошибка подкючения", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (res.Length == 0)
+            {
+                LoadTablesCombo();
+            }
+            else
+            {
+                MessageBox.Show(res, "Ошибка выполнения запроса", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

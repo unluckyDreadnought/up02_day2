@@ -73,9 +73,9 @@ namespace WindowsFormsApp1.Properties {
         ////*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
         ////*!40101 SET @OLD_COLLATION_CO [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string DB_STRUCTURE_DUMP {
+        internal static string db_structure_empty_dump_v3 {
             get {
-                return ResourceManager.GetString("DB_STRUCTURE_DUMP", resourceCulture);
+                return ResourceManager.GetString("db_structure_empty_dump_v3", resourceCulture);
             }
         }
     }

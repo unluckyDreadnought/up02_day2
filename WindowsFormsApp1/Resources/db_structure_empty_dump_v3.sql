@@ -48,6 +48,14 @@ CREATE TABLE `client` (
 ) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Dumping data for table `client`
+--
+
+LOCK TABLES `client` WRITE;
+/*!40000 ALTER TABLE `client` DISABLE KEYS */;
+/*!40000 ALTER TABLE `client` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `clienttype`
@@ -62,6 +70,15 @@ CREATE TABLE `clienttype` (
   PRIMARY KEY (`ClientTypeID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `clienttype`
+--
+
+LOCK TABLES `clienttype` WRITE;
+/*!40000 ALTER TABLE `clienttype` DISABLE KEYS */;
+/*!40000 ALTER TABLE `clienttype` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `control_point_to_subtask`
@@ -84,6 +101,15 @@ CREATE TABLE `control_point_to_subtask` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `control_point_to_subtask`
+--
+
+LOCK TABLES `control_point_to_subtask` WRITE;
+/*!40000 ALTER TABLE `control_point_to_subtask` DISABLE KEYS */;
+/*!40000 ALTER TABLE `control_point_to_subtask` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `controlpoint`
 --
 
@@ -102,6 +128,15 @@ CREATE TABLE `controlpoint` (
   CONSTRAINT `controlpoint_status_ref_k` FOREIGN KEY (`StatusID`) REFERENCES `status` (`StatusID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `controlpoint`
+--
+
+LOCK TABLES `controlpoint` WRITE;
+/*!40000 ALTER TABLE `controlpoint` DISABLE KEYS */;
+/*!40000 ALTER TABLE `controlpoint` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `eventjournal`
@@ -124,6 +159,14 @@ CREATE TABLE `eventjournal` (
 ) ENGINE=InnoDB AUTO_INCREMENT=237 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Dumping data for table `eventjournal`
+--
+
+LOCK TABLES `eventjournal` WRITE;
+/*!40000 ALTER TABLE `eventjournal` DISABLE KEYS */;
+/*!40000 ALTER TABLE `eventjournal` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `eventtype`
@@ -141,6 +184,15 @@ CREATE TABLE `eventtype` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `eventtype`
+--
+
+LOCK TABLES `eventtype` WRITE;
+/*!40000 ALTER TABLE `eventtype` DISABLE KEYS */;
+/*!40000 ALTER TABLE `eventtype` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `organitationtype`
 --
 
@@ -153,6 +205,15 @@ CREATE TABLE `organitationtype` (
   PRIMARY KEY (`OrganitationTypeName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `organitationtype`
+--
+
+LOCK TABLES `organitationtype` WRITE;
+/*!40000 ALTER TABLE `organitationtype` DISABLE KEYS */;
+/*!40000 ALTER TABLE `organitationtype` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `project`
@@ -183,6 +244,15 @@ CREATE TABLE `project` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `project`
+--
+
+LOCK TABLES `project` WRITE;
+/*!40000 ALTER TABLE `project` DISABLE KEYS */;
+/*!40000 ALTER TABLE `project` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `specialization`
 --
 
@@ -198,6 +268,15 @@ CREATE TABLE `specialization` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `specialization`
+--
+
+LOCK TABLES `specialization` WRITE;
+/*!40000 ALTER TABLE `specialization` DISABLE KEYS */;
+/*!40000 ALTER TABLE `specialization` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `stage`
 --
 
@@ -211,6 +290,16 @@ CREATE TABLE `stage` (
   UNIQUE KEY `StageTitle_UNIQUE` (`StageTitle`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `stage`
+--
+
+LOCK TABLES `stage` WRITE;
+/*!40000 ALTER TABLE `stage` DISABLE KEYS */;
+INSERT INTO `stage` VALUES (4,'Документирование'),(1,'Проектирование'),(2,'Реализация'),(3,'Тестирование');
+/*!40000 ALTER TABLE `stage` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `stage_in_project`
@@ -233,6 +322,15 @@ CREATE TABLE `stage_in_project` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `stage_in_project`
+--
+
+LOCK TABLES `stage_in_project` WRITE;
+/*!40000 ALTER TABLE `stage_in_project` DISABLE KEYS */;
+/*!40000 ALTER TABLE `stage_in_project` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `status`
 --
 
@@ -246,7 +344,17 @@ CREATE TABLE `status` (
   UNIQUE KEY `StatusTitle_UNIQUE` (`StatusTitle`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
--
+
+--
+-- Dumping data for table `status`
+--
+
+LOCK TABLES `status` WRITE;
+/*!40000 ALTER TABLE `status` DISABLE KEYS */;
+/*!40000 ALTER TABLE `status` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `subtask`
 --
 
@@ -260,6 +368,15 @@ CREATE TABLE `subtask` (
   UNIQUE KEY `SubtaskTitle_UNIQUE` (`SubtaskTitle`)
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `subtask`
+--
+
+LOCK TABLES `subtask` WRITE;
+/*!40000 ALTER TABLE `subtask` DISABLE KEYS */;
+/*!40000 ALTER TABLE `subtask` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `subtask_in_project_stage`
@@ -282,6 +399,14 @@ CREATE TABLE `subtask_in_project_stage` (
 ) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Dumping data for table `subtask_in_project_stage`
+--
+
+LOCK TABLES `subtask_in_project_stage` WRITE;
+/*!40000 ALTER TABLE `subtask_in_project_stage` DISABLE KEYS */;
+/*!40000 ALTER TABLE `subtask_in_project_stage` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `user`
@@ -310,6 +435,15 @@ CREATE TABLE `user` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `usermode`
 --
 
@@ -323,6 +457,15 @@ CREATE TABLE `usermode` (
   UNIQUE KEY `UserModeTitle_UNIQUE` (`UserModeTitle`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `usermode`
+--
+
+LOCK TABLES `usermode` WRITE;
+/*!40000 ALTER TABLE `usermode` DISABLE KEYS */;
+/*!40000 ALTER TABLE `usermode` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `userproject`
@@ -342,6 +485,14 @@ CREATE TABLE `userproject` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Dumping data for table `userproject`
+--
+
+LOCK TABLES `userproject` WRITE;
+/*!40000 ALTER TABLE `userproject` DISABLE KEYS */;
+/*!40000 ALTER TABLE `userproject` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -352,4 +503,4 @@ CREATE TABLE `userproject` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-03-31 19:07:57
+-- Dump completed on 2025-04-01 20:47:55

@@ -22,3 +22,13 @@ D:\nibush\Day12\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe.config
 D:\nibush\Day12\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CopyComplete
 D:\nibush\Day12\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 D:\nibush\Day12\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+D:\flash\ddd\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+D:\flash\ddd\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+D:\flash\ddd\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+D:\flash\ddd\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache
+D:\flash\ddd\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+D:\flash\ddd\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+D:\flash\ddd\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+D:\flash\ddd\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+D:\flash\ddd\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+D:\flash\ddd\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb

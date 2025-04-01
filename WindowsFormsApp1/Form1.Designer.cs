@@ -37,6 +37,8 @@ namespace WindowsFormsApp1
             // 
             // repair
             // 
+            this.repair.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.repair.Location = new System.Drawing.Point(119, 24);
             this.repair.Name = "repair";
             this.repair.Size = new System.Drawing.Size(188, 35);
@@ -49,7 +51,7 @@ namespace WindowsFormsApp1
             // 
             this.import.Location = new System.Drawing.Point(27, 98);
             this.import.Name = "import";
-            this.import.Size = new System.Drawing.Size(110, 32);
+            this.import.Size = new System.Drawing.Size(125, 38);
             this.import.TabIndex = 0;
             this.import.Text = "Импорт";
             this.import.UseVisualStyleBackColor = true;
@@ -57,6 +59,7 @@ namespace WindowsFormsApp1
             // 
             // exit
             // 
+            this.exit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.exit.Location = new System.Drawing.Point(27, 233);
             this.exit.Name = "exit";
             this.exit.Size = new System.Drawing.Size(136, 42);
@@ -67,16 +70,18 @@ namespace WindowsFormsApp1
             // 
             // tables
             // 
+            this.tables.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tables.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tables.FormattingEnabled = true;
-            this.tables.Location = new System.Drawing.Point(160, 99);
+            this.tables.Location = new System.Drawing.Point(168, 99);
             this.tables.Name = "tables";
-            this.tables.Size = new System.Drawing.Size(262, 32);
+            this.tables.Size = new System.Drawing.Size(254, 37);
             this.tables.TabIndex = 1;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(443, 287);
             this.Controls.Add(this.tables);
@@ -84,7 +89,7 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.import);
             this.Controls.Add(this.repair);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
