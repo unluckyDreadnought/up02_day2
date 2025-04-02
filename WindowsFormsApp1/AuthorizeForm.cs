@@ -73,13 +73,25 @@ namespace WindowsFormsApp1
 
         private void BlockInput()
         {
-            timer1.Start();
-            statusStrip1.Visible = true;
             if (!panel2.Visible)
             {
                 ChangeVisbilityOfCapcha();
+                ClearFields();
             }
-            else UpdateCaptcha();
+            else
+            {
+                ClearFields();
+                MessageBox.Show("Система блокируется на 10 секунд");
+                timer1.Start();
+                statusStrip1.Visible = true;
+            }
+        }
+
+        private void ClearFields()
+        {
+            login.Text = "";
+            pass.Text = "";
+            captcha.Text = "";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -89,6 +101,7 @@ namespace WindowsFormsApp1
                 if (captcha.Text != captchaTxt)
                 {
                     MessageBox.Show("Введённое значение Captcha не соответствует заданному", "");
+                    BlockInput();
                     return;
                 }
             }
@@ -102,6 +115,7 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show($"Успешная авторизация. Ваш ID: {0}", "Авторизация", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 if (panel2.Visible) ChangeVisbilityOfCapcha();
+                ClearFields();
             }
             else
             {
@@ -114,6 +128,7 @@ namespace WindowsFormsApp1
         private void AuthorizeForm_Load(object sender, EventArgs e)
         {
             ChangeVisbilityOfCapcha();
+            statusStrip1.Visible = false;
         }
 
         private void button2_Click_1(object sender, EventArgs e)
@@ -121,13 +136,26 @@ namespace WindowsFormsApp1
             UpdateCaptcha();
         }
 
+        private void ChangeEnableOfControls(bool en)
+        {
+            if (Controls[0].Enabled != en)
+            {
+                foreach (Control c in this.Controls)
+                {
+                    c.Enabled = en;
+                }
+            }
+            else return;
+        }
+
         private void timer1_Tick(object sender, EventArgs e)
         {
+            ChangeEnableOfControls(false);
             if (seconds > 0)
             {
                 seconds -= 1;
-                progress.Value = progress.Maximum * (1 - 1 * 10 / seconds);
-                
+                int curr = Convert.ToInt32(progress.Maximum*(1-(seconds/10)));
+                progress.Value = curr;
                 remainSeconds.Text = $"Осталось {seconds} с.";
             }
             else if (seconds == 0)
@@ -135,6 +163,8 @@ namespace WindowsFormsApp1
                 timer1.Stop();
                 seconds = 10;
                 statusStrip1.Visible = false;
+                UpdateCaptcha();
+                ChangeEnableOfControls(true);
             }
             
         }
