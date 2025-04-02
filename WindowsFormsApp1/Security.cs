@@ -30,19 +30,66 @@ namespace WindowsFormsApp1
                 int r = rand.Next(5);
                 if (r < 2)
                 {
-                    str += en_alp[rand.Next(num.Length)];
+                    str += en_alp[rand.Next(en_alp.Length)];
                 }
                 else
                 {
-                    str += en_alp[rand.Next(en_alp.Length)];
+                    str += num[rand.Next(num.Length)];
                 }
             }
             return str;
         }
 
-        public static void GenerateCaptchaImage(string text)
+        public static Bitmap GenerateCaptchaImage(string text)
         {
             Bitmap bmp = new Bitmap(260, 167);
+            Color[] bgcolors = new Color[] { Color.LightGray, Color.WhiteSmoke, Color.AliceBlue, Color.Azure, Color.AntiqueWhite };
+            Color[] lineColors = new Color[] { Color.DarkSeaGreen, Color.DarkSlateBlue, Color.DarkTurquoise, Color.DeepPink, Color.SteelBlue };
+            Color[] textColors = new Color[] { Color.Black, Color.Navy, Color.PaleTurquoise, Color.Indigo, Color.IndianRed, Color.Green, Color.SaddleBrown, Color.Purple, Color.PeachPuff };
+            FontStyle[] fontStyles = new FontStyle[] { FontStyle.Bold, FontStyle.Italic, FontStyle.Regular  };
+            PointF lastTPoint = new PointF();
+            int placedSymbols = 0;
+            using (Graphics grhx = Graphics.FromImage(bmp))
+            {
+                grhx.Clear(bgcolors[rand.Next(bgcolors.Length)]);
+                int lineCount = 0;
+                while (lineCount < 10)
+                {
+                    using (Pen p = new Pen(lineColors[rand.Next(lineColors.Length)], (float)(rand.NextDouble() * rand.Next(5,20))))
+                    {
+                        Point[] points = new Point[2];
+                        int w = rand.Next(bmp.Width);
+                        int h = rand.Next(bmp.Height);
+                        points[0] = new Point(w, h);
+                        w = rand.Next(bmp.Width);
+                        h = rand.Next(bmp.Height);
+                        points[1] = new Point(w, h);
+                        grhx.DrawLine(p, points[0], points[1]);
+                        if (rand.Next(15) > 7 && placedSymbols < text.Length)
+                        {
+                            int angle = (rand.Next(5) > 2) ? rand.Next(5, 35) : -1 * rand.Next(5, 35);
+                            PointF textPoint = new PointF();
+                            while (textPoint.X <= lastTPoint.X)
+                            {
+                                int max = bmp.Width / (text.Length - placedSymbols);
+                                textPoint.X = rand.Next(Convert.ToInt32(lastTPoint.X), max);
+                                textPoint.Y = rand.Next(Convert.ToInt32(bmp.Height*0.35), Convert.ToInt32(bmp.Height*0.6));
+                            }
+                            grhx.RotateTransform((float)(rand.NextDouble() * angle));
+                            Font font = new Font(FontFamily.GenericSansSerif, rand.Next(20, 40), fontStyles[rand.Next(fontStyles.Length)]);
+                            grhx.DrawString(text[placedSymbols].ToString(), font, new SolidBrush(textColors[rand.Next(textColors.Length)]), textPoint);
+                            lastTPoint = textPoint;
+                            placedSymbols++;
+                        }
+                    }
+                    lineCount++;
+                }
+
+                
+                
+            }
+
+            return bmp;
         }
     }
 }
