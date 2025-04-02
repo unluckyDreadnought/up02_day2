@@ -167,7 +167,7 @@ namespace WindowsFormsApp1
 
         private void exit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
         }
 
         private void repair_Click(object sender, EventArgs e)

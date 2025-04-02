@@ -137,5 +137,27 @@ namespace WindowsFormsApp1
             con.Close();
             return n;
         }
+
+        public static string[] IsUserExists(string login, string pswd)
+        {
+            MySqlConnection con = GetConnection();
+            if (con == null) return null;
+            pswd = Security.HashInput512(pswd);
+            string query = $"select UserID from user where UserLogin = '{login}' and UserPassword = '{pswd}'; ";
+            MySqlCommand com = new MySqlCommand(query, con);
+            string[] data = null;
+            try
+            {
+                DataTable dt = new DataTable();
+                dt.Load(com.ExecuteReader());
+                data = Db.DataTableToStringArray(dt);
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+            con.Close();
+            return data;
+        }
     }
 }

@@ -32,3 +32,4 @@ D:\flash\ddd\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource
 D:\flash\ddd\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
 D:\flash\ddd\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 D:\flash\ddd\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+D:\nibush\Day12\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.AuthorizeForm.resources
