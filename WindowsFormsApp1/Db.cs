@@ -159,5 +159,68 @@ namespace WindowsFormsApp1
             con.Close();
             return data;
         }
+    
+        public static (DataTable, int) GetProjects(string searchPattern = "", int page = 1)
+        {
+            string query = $@"select project.ProjectID, ProjectTitle, concat(UserSurname, ' ', substring(UserName, 1,1), '.', substring(UserPatronymic, 1,1)) as 'fio', StatusTitle,
+case when ProjectFactEndDate is NULL then ProjectPlanEndDate
+else ProjectFactEndDate
+end as 'date',
+case when ProjectCoefficient = 0 then concat(ProjectCost, ' | 0')
+else concat(round(ProjectCost*(1+ProjectCoefficient/100),2), ' | ', round(ProjectCost-round(ProjectCost*(1+ProjectCoefficient/100),2),2))
+end as 'cost'
+from project
+left join userproject on userproject.ProjectID = project.ProjectID and userproject.IsResponsible = 1
+left join `user` on `user`.UserID = userproject.UserID
+inner join `status` on `status`.StatusID = project.ProjectStatusID
+where ProjectTitle like '%{searchPattern}%' limit 20 offset {(page-1)*20}; ";
+            MySqlConnection con = GetConnection();
+            if (con == null) return (null, -1);
+            MySqlCommand com = new MySqlCommand(query, con);
+            DataTable dt = new DataTable();
+            int total = 0;
+            try
+            {
+                using (var rdr = com.ExecuteReader())
+                {
+                    dt.Load(rdr);
+                }
+                total = GetTotalRowsCount(searchPattern);
+            }
+            catch (Exception)
+            {
+                return (null, -1);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return (dt, total);
+        }
+
+        public static int GetTotalRowsCount(string searchPattern)
+        {
+            string query = $@"select count(project.ProjectID)
+from project
+left join userproject on userproject.ProjectID = project.ProjectID and userproject.IsResponsible = 1
+left join `user` on `user`.UserID = userproject.UserID
+inner join `status` on `status`.StatusID = project.ProjectStatusID
+where ProjectTitle like '%{searchPattern}%'; ";
+            MySqlConnection con = GetConnection();
+            if (con == null) return -1;
+            MySqlCommand com = new MySqlCommand(query, con);
+            try
+            {
+                return Convert.ToInt32(com.ExecuteScalar());
+            }
+            catch (Exception)
+            {
+                return -1;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
     }
 }
