@@ -63,6 +63,7 @@ namespace WindowsFormsApp1
             this.searchLine.Size = new System.Drawing.Size(864, 29);
             this.searchLine.TabIndex = 5;
             this.searchLine.TextChanged += new System.EventHandler(this.searchLine_TextChanged);
+            this.searchLine.KeyDown += new System.Windows.Forms.KeyEventHandler(this.arrow_KeyDown);
             // 
             // projTable
             // 
@@ -76,6 +77,7 @@ namespace WindowsFormsApp1
             this.projTable.Name = "projTable";
             this.projTable.Size = new System.Drawing.Size(864, 418);
             this.projTable.TabIndex = 4;
+            this.projTable.KeyDown += new System.Windows.Forms.KeyEventHandler(this.arrow_KeyDown);
             // 
             // ProjectForm
             // 
@@ -91,6 +93,7 @@ namespace WindowsFormsApp1
             this.Name = "ProjectForm";
             this.Text = "ProjectForm";
             this.Load += new System.EventHandler(this.ProjectForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.arrow_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.projTable)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

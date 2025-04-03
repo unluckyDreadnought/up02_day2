@@ -12,6 +12,8 @@ namespace WindowsFormsApp1
 {
     public partial class ProjectForm : Form
     {
+        
+
         public ProjectForm()
         {
             InitializeComponent();
@@ -20,6 +22,23 @@ namespace WindowsFormsApp1
         private void UpdatePages(int pagesCount, int curPage)
         {
             panel1.Controls.Clear();
+
+            //if (pagesCount > 5)
+            //{
+            //    Label page = new Label();
+            //    page.AutoSize = true;
+            //    page.Text = "...";
+            //    page.Dock = DockStyle.Left;
+            //    page.Click += page_Clicked;
+            //    if (page.Text == curPage.ToString())
+            //    {
+            //        page.BackColor = Color.CadetBlue;
+            //        page.ForeColor = Color.White;
+            //    }
+            //    panel1.Controls.Add(page);
+            //    pagesCount = 5;
+            //}
+
             int n = pagesCount - 1;
             do
             {
@@ -47,8 +66,8 @@ namespace WindowsFormsApp1
                 dt = new DataTable();
             }
             projTable.DataSource = dt;
-            int currentCount = dt.Rows.Count;
-            int pagesCount = total / 20;
+            int currentCount = (20 * (offset-1)) + dt.Rows.Count;
+            int pagesCount = Convert.ToInt32(Math.Ceiling((double)total / 20));
             linesCount.Text = $"Количество записей: {currentCount} из {total}";
             UpdatePages(pagesCount, offset);
         }
@@ -69,6 +88,44 @@ namespace WindowsFormsApp1
             int page = 1;
             int.TryParse(((Label)sender).Text, out page);
             UpdateTable(page);
+        }
+
+        private void arrow_KeyDown(object sender, KeyEventArgs e)
+        {
+            int pageCount = panel1.Controls.Count;
+            int lbIndx = 0;
+
+            if (e.KeyCode == Keys.Right || e.KeyCode == Keys.Left)
+            {
+
+                while (lbIndx < panel1.Controls.Count)
+                {
+                    if (panel1.Controls[lbIndx].ForeColor == Color.White) break;
+                    lbIndx++;
+                }
+            }
+
+            if (e.KeyCode == Keys.Right)
+            {
+                if (lbIndx - 1 >= 0) 
+                {
+                    lbIndx--;
+                    UpdateTable(Convert.ToInt32(panel1.Controls[lbIndx].Text));
+                    return;
+                }
+                else return;
+            }
+            else if (e.KeyCode == Keys.Left)
+            {
+                if (lbIndx + 1 < pageCount)
+                {
+                    lbIndx++;
+                    UpdateTable(Convert.ToInt32(panel1.Controls[lbIndx].Text));
+                    return;
+                }
+                else return;
+            }
+            else e.Handled = true;
         }
 
     }
