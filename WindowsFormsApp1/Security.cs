@@ -67,7 +67,6 @@ namespace WindowsFormsApp1
                         grhx.DrawLine(p, points[0], points[1]);
                         if (rand.Next(15) > 7 && placedSymbols < text.Length)
                         {
-                            int angle = (rand.Next(5) > 2) ? rand.Next(5, 35) : -1 * rand.Next(5, 35);
                             PointF textPoint = new PointF();
                             while (textPoint.X <= lastTPoint.X)
                             {
@@ -75,7 +74,6 @@ namespace WindowsFormsApp1
                                 textPoint.X = rand.Next(Convert.ToInt32(lastTPoint.X), max);
                                 textPoint.Y = rand.Next(Convert.ToInt32(bmp.Height*0.35), Convert.ToInt32(bmp.Height*0.6));
                             }
-                            grhx.RotateTransform((float)(rand.NextDouble() * angle));
                             Font font = new Font(FontFamily.GenericSansSerif, rand.Next(20, 40), fontStyles[rand.Next(fontStyles.Length)]);
                             grhx.DrawString(text[placedSymbols].ToString(), font, new SolidBrush(textColors[rand.Next(textColors.Length)]), textPoint);
                             lastTPoint = textPoint;
@@ -84,12 +82,38 @@ namespace WindowsFormsApp1
                     }
                     lineCount++;
                 }
-
-                
-                
             }
 
             return bmp;
+        }
+
+        public static string GetSnp(string fullName)
+        {
+            string[] parts = fullName.Trim().Split(' ');
+            int pIndx = 1;
+            while (pIndx < parts.Length)
+            {
+                parts[pIndx] = $"{parts[pIndx][0]}.";
+                pIndx++;
+            }
+            return string.Join(" ", parts);
+        }
+
+        public static string HidePhoneData(string phoneNumber)
+        {
+            string hidden = $"+{phoneNumber[0]}";
+            hidden += " ... ";
+            int numIndx = 7;
+            while (numIndx < phoneNumber.Length)
+            {
+                if (numIndx % 2 != 0 && numIndx != phoneNumber.Length - 1)
+                {
+                    hidden += '-';
+                }
+                hidden += phoneNumber[numIndx];
+                numIndx++;
+            }
+            return hidden;
         }
     }
 }

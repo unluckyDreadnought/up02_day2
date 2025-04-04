@@ -82,6 +82,7 @@ namespace WindowsFormsApp1
             {
                 ClearFields();
                 MessageBox.Show("Система блокируется на 10 секунд");
+                progress.Value = 0;
                 timer1.Start();
                 statusStrip1.Visible = true;
             }
@@ -114,6 +115,10 @@ namespace WindowsFormsApp1
             else if (data.Length > 0)
             {
                 MessageBox.Show($"Успешная авторизация. Ваш ID: {0}", "Авторизация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Visible = false;
+                Menu form = new Menu();
+                form.ShowDialog();
+                this.Visible = true;
                 if (panel2.Visible) ChangeVisbilityOfCapcha();
                 ClearFields();
             }
@@ -154,7 +159,7 @@ namespace WindowsFormsApp1
             if (seconds > 0)
             {
                 seconds -= 1;
-                int curr = Convert.ToInt32(progress.Maximum*(1-(seconds/10)));
+                int curr = Convert.ToInt32(progress.Maximum*(1-((double)seconds/(double)10)));
                 progress.Value = curr;
                 remainSeconds.Text = $"Осталось {seconds} с.";
             }

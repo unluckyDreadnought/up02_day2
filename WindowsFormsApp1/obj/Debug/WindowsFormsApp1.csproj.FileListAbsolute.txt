@@ -34,3 +34,5 @@ D:\flash\ddd\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 D:\flash\ddd\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
 D:\nibush\Day12\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.AuthorizeForm.resources
 D:\nibush\Day12\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.ProjectForm.resources
+D:\nibush\Day12\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Menu.resources
+D:\nibush\Day12\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.ClientForm.resources

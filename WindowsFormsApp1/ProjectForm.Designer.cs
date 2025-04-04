@@ -38,6 +38,7 @@ namespace WindowsFormsApp1
             // 
             // linesCount
             // 
+            this.linesCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.linesCount.AutoSize = true;
             this.linesCount.Location = new System.Drawing.Point(12, 476);
             this.linesCount.Name = "linesCount";
@@ -89,7 +90,7 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.searchLine);
             this.Controls.Add(this.projTable);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "ProjectForm";
             this.Text = "ProjectForm";
             this.Load += new System.EventHandler(this.ProjectForm_Load);
