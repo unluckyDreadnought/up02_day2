@@ -38,6 +38,7 @@
       <HintPath>C:\Program Files (x86)\MySQL\Connector NET 8.0\Assemblies\v4.5.2\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -50,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actionless.cs" />
     <Compile Include="AuthorizeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +64,7 @@
     <Compile Include="ClientsForm.Designer.cs">
       <DependentUpon>ClientsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Configs.cs" />
     <Compile Include="Db.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

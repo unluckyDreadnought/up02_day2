@@ -65,12 +65,6 @@ namespace WindowsFormsApp1
             enterBtn.Enabled = enabled;
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-            Form1 settings = new Form1();
-            settings.ShowDialog();
-        }
-
         private void BlockInput()
         {
             if (!panel2.Visible)
@@ -106,10 +100,21 @@ namespace WindowsFormsApp1
                     return;
                 }
             }
+            
+            if (login.Text == Configs.localLogin && pass.Text == Configs.localPswd)
+            {
+                this.Visible = false;
+                Form1 settings = new Form1();
+                settings.ShowDialog();
+                this.Visible = true;
+                ClearFields();
+                return;
+            }
+
             string[] data = Db.IsUserExists(login.Text, pass.Text);
             if (data == null) {
                 MessageBox.Show("Ошибка", "Ошибка авторизации", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                BlockInput();
+                //BlockInput();
                 return;
             }
             else if (data.Length > 0)

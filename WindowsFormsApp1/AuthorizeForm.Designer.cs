@@ -34,7 +34,6 @@ namespace WindowsFormsApp1
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.progress = new System.Windows.Forms.ToolStripProgressBar();
             this.remainSeconds = new System.Windows.Forms.ToolStripStatusLabel();
-            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.enterBtn = new System.Windows.Forms.Button();
@@ -54,7 +53,6 @@ namespace WindowsFormsApp1
             // panel1
             // 
             this.panel1.Controls.Add(this.statusStrip1);
-            this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.enterBtn);
@@ -86,17 +84,6 @@ namespace WindowsFormsApp1
             // 
             this.remainSeconds.Name = "remainSeconds";
             this.remainSeconds.Size = new System.Drawing.Size(0, 17);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(85, 282);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(91, 20);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Настройки";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
@@ -225,7 +212,6 @@ namespace WindowsFormsApp1
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button enterBtn;

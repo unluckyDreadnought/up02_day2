@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Security.Cryptography;
 using System.Drawing;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
@@ -114,6 +114,18 @@ namespace WindowsFormsApp1
                 numIndx++;
             }
             return hidden;
+        }
+
+        public static void LogOut()
+        {
+            Form[] forms = Application.OpenForms.Cast<Form>().ToArray();
+            foreach (Form f in forms)
+            {
+                if (f is AuthorizeForm) continue;
+                f.Close();
+            }
+            Form author = forms.Where(f => f is AuthorizeForm).ToArray()[0];
+            author.Visible = true;
         }
     }
 }

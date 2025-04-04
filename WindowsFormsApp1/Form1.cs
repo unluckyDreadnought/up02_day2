@@ -85,8 +85,9 @@ namespace WindowsFormsApp1
             }
             else if (fieldInfo[1].Contains("blob"))
             {
-                if (fieldInfo[2] == "NO") escaped = (value != null && value != "") ? $"{value}" : null;
-                else escaped = (value != null && value != "") ? $"{value}" : "null";
+                //if (fieldInfo[2] == "NO") escaped = (value != null && value != "") ? $"{value}" : null;
+                //else escaped = (value != null && value != "") ? $"{value}" : "null";
+                escaped = "null";
             }
 
             if (escaped == null)
@@ -137,6 +138,12 @@ namespace WindowsFormsApp1
                 int colIndx = 0;
                 while (!isError && colIndx < srcData.Length)
                 {
+                    if (srcData.Length > curTblDesc.Length)
+                    {
+                        isError = true;
+                        errMsg = "Количество полей превышало ожидаемое";
+                        break;
+                    }
                     (escaped, errMsg) = GetCorrectEscapeValue(colIndx, srcData[colIndx]);
                     isError = errMsg != null;
 
@@ -178,6 +185,7 @@ namespace WindowsFormsApp1
             }
             else if (res.Length == 0)
             {
+                MessageBox.Show("Структура БД успешно восстановлена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadTablesCombo();
             }
             else
