@@ -284,5 +284,32 @@ from client where ClientID > 1; ";
             }
             return dt;
         }
+
+        public static string[] GetClient(string clientId)
+        {
+            MySqlConnection con = GetConnection();
+            if (con == null) return null;
+            string query = $@"select  ClientID, 
+case when ClientOrgTypeID is null then concat(ClientName) else concat(ClientOrgTypeID, ' \'', ClientName, '\'') end as `ClientName`, 
+ ClientPhone, ClientEmail, ClientAddress
+from client where ClientID = {clientId};";
+            MySqlCommand com = new MySqlCommand(query, con);
+            DataTable dt = new DataTable();
+            string[] info = null;
+            try
+            {
+                dt.Load(com.ExecuteReader());
+                info = DataTableToStringArray(dt);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return info;
+        }
     }
 }

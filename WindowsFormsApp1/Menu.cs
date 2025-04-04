@@ -28,7 +28,7 @@ namespace WindowsFormsApp1
         private void clientbtn_Click(object sender, EventArgs e)
         {
             this.Visible = false;
-            ClientForm form = new ClientForm();
+            ClientsForm form = new ClientsForm();
             form.ShowDialog();
             this.Visible = true;
         }

@@ -1,7 +1,7 @@
 ﻿
 namespace WindowsFormsApp1
 {
-    partial class ClientForm
+    partial class ClientsForm
     {
         /// <summary>
         /// Required designer variable.

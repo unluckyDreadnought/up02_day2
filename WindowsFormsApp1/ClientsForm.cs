@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class ClientForm : Form
+    public partial class ClientsForm : Form
     {
-        public ClientForm()
+        public ClientsForm()
         {
             InitializeComponent();
         }
@@ -52,7 +52,10 @@ namespace WindowsFormsApp1
 
         private void clientsTable_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            if (e.RowIndex == -1) return;
+            string clientId = clientsTable.Rows[e.RowIndex].Cells[0].Value.ToString();
+            ViewClient clientInfo = new ViewClient(clientId);
+            clientInfo.ShowDialog();
         }
 
         private void ClientForm_Load(object sender, EventArgs e)
