@@ -53,6 +53,27 @@ namespace WindowsFormsApp1
             while (n >= 0);
         }
 
+        private void ColorTable()
+        {
+            int line = 0;
+            while (line < projTable.RowCount)
+            {
+                Color bgcolor = Color.White;
+                Color color = Color.Black;
+                switch (projTable.Rows[line].Cells[3].Value.ToString())
+                {
+                    case "Завершено": bgcolor = Color.LightGray; color = Color.DimGray; break;
+                    case "Подготовка к завершению": bgcolor = Color.LightBlue; color = Color.DarkBlue; break;
+                    case "Новый": bgcolor = Color.DarkSeaGreen;  color = Color.White; break;
+                    //case "В работе": bgcolor = Color.White; color = Color.MediumBlue; break;
+                    case "Отклонён": bgcolor = Color.MistyRose;  color = Color.DarkRed; break;
+                }
+                projTable.Rows[line].Cells[3].Style.BackColor = bgcolor;
+                projTable.Rows[line].Cells[3].Style.ForeColor = color;
+                line++;
+            }
+        }
+
         private void UpdateTable(int offset = 1, string range = null)
         {
             DataTable dt = source.Clone();
@@ -68,6 +89,7 @@ namespace WindowsFormsApp1
             }
 
             projTable.DataSource = dt;
+            ColorTable();
             int total = source.Rows.Count;
             int currentCount = (20 * (offset - 1)) + dt.Rows.Count;
             int pagesCount = Convert.ToInt32(Math.Ceiling((double)total / 20));
@@ -75,22 +97,6 @@ namespace WindowsFormsApp1
             if (range == null) UpdatePages(pagesCount, offset);
             else UpdatePages(pagesCount, offset, range);
         }
-
-        //private void UpdateTable(int offset = 1)
-        //{
-        //    (DataTable dt, int total) = Db.GetProjects(searchLine.Text, offset);
-        //    if (dt == null)
-        //    {
-        //        MessageBox.Show("Ошибка получения данных");
-        //        dt = new DataTable();
-        //    }
-        //    projTable.DataSource = dt;
-        //    int currentCount = (20 * (offset - 1)) + dt.Rows.Count;
-        //    int pagesCount = Convert.ToInt32(Math.Ceiling((double)total / 20));
-        //    linesCount.Text = $"Количество записей: {currentCount} из {total}";
-        //    UpdatePages(pagesCount, offset);
-        //}
-
 
         private void searchLine_TextChanged(object sender, EventArgs e)
         {
@@ -157,6 +163,5 @@ namespace WindowsFormsApp1
             }
             else e.Handled = true;
         }
-
     }
 }
