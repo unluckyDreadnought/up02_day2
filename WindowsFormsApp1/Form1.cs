@@ -28,6 +28,7 @@ namespace WindowsFormsApp1
         private void Form1_Load(object sender, EventArgs e)
         {
             LoadTablesCombo();
+            numericUpDown1.Value = Configs.timeout;
         }
 
         private (string, string) GetCorrectEscapeValue(int columnIndx, string value)
@@ -192,6 +193,11 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show(res, "Ошибка выполнения запроса", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            Configs.timeout = Convert.ToInt32(numericUpDown1.Value);
         }
     }
 }

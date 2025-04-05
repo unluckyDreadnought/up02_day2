@@ -35,37 +35,13 @@ namespace WindowsFormsApp1
             set { SetSetting("localL", value); }
         }
 
-        // Возвращает / Устанавливает адрес размещения БД
-        public static string dbHost
+        public static int timeout
         {
-            get { return GetSetting("host"); }
-            set { SetSetting("host", value); }
-        }
-
-        // Возвращает / Устанавливает пользователя БД
-        public static string dbUser
-        {
-            get { return GetSetting("user"); }
-            set { SetSetting("user", value); }
-        }
-
-        // Возвращает / Устанавливает пароль пользователя БД
-        public static string dbUserPass
-        {
-            get { return GetSetting("usrpswd"); }
-            set { SetSetting("usrpswd", value); }
-        }
-
-        // Возвращает имя базы данных
-        public static string dbName
-        {
-            get { return "project_office"; }
-        }
-
-        public static string director
-        {
-            get { return GetSetting("director"); }
-            set { SetSetting("director", value); }
+            get { return Convert.ToInt32(GetSetting("timeout")); }
+            set { 
+                SetSetting("timeout", (value).ToString());
+                SaveModified();
+            }
         }
 
         // Функция для записи изменений настроек в файл

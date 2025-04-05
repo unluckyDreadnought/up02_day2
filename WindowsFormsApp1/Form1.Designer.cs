@@ -35,6 +35,9 @@ namespace WindowsFormsApp1
             this.tables = new System.Windows.Forms.ComboBox();
             this.rowImportResults = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // repair
@@ -78,7 +81,7 @@ namespace WindowsFormsApp1
             this.tables.FormattingEnabled = true;
             this.tables.Location = new System.Drawing.Point(153, 101);
             this.tables.Name = "tables";
-            this.tables.Size = new System.Drawing.Size(449, 37);
+            this.tables.Size = new System.Drawing.Size(449, 32);
             this.tables.TabIndex = 1;
             // 
             // rowImportResults
@@ -88,11 +91,11 @@ namespace WindowsFormsApp1
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rowImportResults.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.rowImportResults.FormattingEnabled = true;
-            this.rowImportResults.ItemHeight = 25;
+            this.rowImportResults.ItemHeight = 20;
             this.rowImportResults.Location = new System.Drawing.Point(12, 145);
             this.rowImportResults.Name = "rowImportResults";
             this.rowImportResults.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.rowImportResults.Size = new System.Drawing.Size(590, 179);
+            this.rowImportResults.Size = new System.Drawing.Size(590, 164);
             this.rowImportResults.TabIndex = 2;
             // 
             // label1
@@ -101,14 +104,38 @@ namespace WindowsFormsApp1
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(204, 352);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 25);
+            this.label1.Size = new System.Drawing.Size(0, 20);
             this.label1.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(284, 338);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(253, 24);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Таймер бездействия (сек.)";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(417, 365);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 29);
+            this.numericUpDown1.TabIndex = 5;
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(614, 406);
+            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.rowImportResults);
             this.Controls.Add(this.tables);
@@ -120,6 +147,7 @@ namespace WindowsFormsApp1
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -133,6 +161,8 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.ComboBox tables;
         private System.Windows.Forms.ListBox rowImportResults;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
     }
 }
 

@@ -24,8 +24,11 @@ namespace WindowsFormsApp1
             ProjectForm form = new ProjectForm();
             Actionless.RestartTimer(form);
             form.ShowDialog();
-            this.Visible = true;
-            Actionless.RestartTimer(this);
+            if (this.IsAccessible)
+            {
+                this.Visible = true;
+                Actionless.RestartTimer(this);
+            }
         }
 
         private void clientbtn_Click(object sender, EventArgs e)
@@ -35,8 +38,11 @@ namespace WindowsFormsApp1
             ClientsForm form = new ClientsForm();
             Actionless.RestartTimer(form);
             form.ShowDialog();
-            this.Visible = true;
-            Actionless.RestartTimer(this);
+            if (this.IsAccessible)
+            {
+                this.Visible = true;
+                Actionless.RestartTimer(this);
+            }
         }
 
         private void leavebtn_Click(object sender, EventArgs e)

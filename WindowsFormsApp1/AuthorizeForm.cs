@@ -125,7 +125,7 @@ namespace WindowsFormsApp1
                 Form form = null;
                 MessageBox.Show($"Успешная авторизация. Ваш ID: {0}", "Авторизация", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Visible = false;
-                if (Actionless.LastForm is AuthorizeForm == false)
+                if (Actionless.LastForm is AuthorizeForm == false && Actionless.LastForm != null)
                 {
                     if (Actionless.LastForm is Menu)
                     {

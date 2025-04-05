@@ -18,8 +18,16 @@ namespace WindowsFormsApp1
             }
             _timer = new Timer();
             _timer.Enabled = true;
-            _timer.Interval = 30000;
+            _timer.Interval = Configs.timeout*1000;
             _timer.Tick += timer_Ticked;
+            _timer.Start();
+        }
+
+        public static void SetTimerTime(int seconts)
+        {
+            Configs.timeout = seconts;
+            _timer.Stop();
+            _timer.Interval = Configs.timeout * 1000;
             _timer.Start();
         }
 
@@ -42,8 +50,7 @@ namespace WindowsFormsApp1
 
         private static void timer_Ticked(object sender, EventArgs e)
         {
-            Security.LogOut();
-            
+            if (LastForm is AuthorizeForm == false) Security.LogOut();
         }
     }
 }

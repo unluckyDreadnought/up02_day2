@@ -126,6 +126,8 @@ namespace WindowsFormsApp1
             }
             Form author = forms.Where(f => f is AuthorizeForm).ToArray()[0];
             author.Visible = true;
+            if (Actionless.LastForm != null) {; }
+            else {; }
         }
     }
 }
