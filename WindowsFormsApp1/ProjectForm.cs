@@ -21,6 +21,7 @@ namespace WindowsFormsApp1
 
         private void UpdateSource()
         {
+            Actionless.RestartTimer();
             source = Db.GetProjects(searchLine.Text);
             if (source == null)
             {
@@ -31,6 +32,7 @@ namespace WindowsFormsApp1
 
         private void UpdatePages(int pagesCount, int curPage, string range = null)
         {
+            Actionless.RestartTimer();
             panel1.Controls.Clear();
 
             int n = pagesCount - 1;
@@ -76,6 +78,7 @@ namespace WindowsFormsApp1
 
         private void UpdateTable(int offset = 1, string range = null)
         {
+            Actionless.RestartTimer();
             DataTable dt = source.Clone();
 
             int indx = 0;
@@ -162,6 +165,16 @@ namespace WindowsFormsApp1
                 else return;
             }
             else e.Handled = true;
+        }
+
+        private void action_happened(object sender, EventArgs e)
+        {
+            Actionless.RestartTimer();
+        }
+
+        private void ProjectForm_MouseMove(object sender, MouseEventArgs e)
+        {
+            Actionless.RestartTimer();
         }
     }
 }

@@ -25,6 +25,7 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             ChangeVisbilityOfCapcha();
+            Actionless.StartTimer(this);
         }
 
         private void ChangeVisbilityOfCapcha()
@@ -91,6 +92,7 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Actionless.RestartTimer();
             if (panel2.Visible)
             {
                 if (captcha.Text != captchaTxt)
@@ -105,6 +107,7 @@ namespace WindowsFormsApp1
             {
                 this.Visible = false;
                 Form1 settings = new Form1();
+                Actionless.RestartTimer(settings);
                 settings.ShowDialog();
                 this.Visible = true;
                 ClearFields();
@@ -119,9 +122,29 @@ namespace WindowsFormsApp1
             }
             else if (data.Length > 0)
             {
+                Form form = null;
                 MessageBox.Show($"Успешная авторизация. Ваш ID: {0}", "Авторизация", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Visible = false;
-                Menu form = new Menu();
+                if (Actionless.LastForm is AuthorizeForm == false)
+                {
+                    if (Actionless.LastForm is Menu)
+                    {
+                        form = new Menu();
+                    }
+                    else if (Actionless.LastForm is ClientsForm)
+                    {
+                        form = new ClientsForm();
+                    }
+                    else if (Actionless.LastForm is ProjectForm)
+                    {
+                        form = new ProjectForm();
+                    }
+                }
+                else
+                {
+                    form = new Menu();
+                }
+                Actionless.RestartTimer(form);
                 form.ShowDialog();
                 this.Visible = true;
                 if (panel2.Visible) ChangeVisbilityOfCapcha();
@@ -134,6 +157,8 @@ namespace WindowsFormsApp1
                 return;
             }
         }
+
+
 
         private void AuthorizeForm_Load(object sender, EventArgs e)
         {
@@ -160,6 +185,7 @@ namespace WindowsFormsApp1
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            Actionless.RestartTimer();
             ChangeEnableOfControls(false);
             if (seconds > 0)
             {

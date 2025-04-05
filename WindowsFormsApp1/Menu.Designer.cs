@@ -73,9 +73,13 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.clientbtn);
             this.Controls.Add(this.projbtn);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Menu";
             this.Text = "Menu";
+            this.Activated += new System.EventHandler(this.action_happened);
+            this.ResizeBegin += new System.EventHandler(this.action_happened);
+            this.MouseCaptureChanged += new System.EventHandler(this.action_happened);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Menu_MouseMove);
             this.ResumeLayout(false);
 
         }

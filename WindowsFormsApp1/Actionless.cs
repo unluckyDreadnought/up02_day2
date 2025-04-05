@@ -1,58 +1,49 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace WindowsFormsApp1
 {
-    public class Actionless
+
+    public static class Actionless
     {
-        Timer _timer = null;
-        Form _activeForm = null;
-        
-        public void RestartTimer()
+        private static Timer _timer;
+        public static Form LastForm;
+
+        public static void StartTimer(Form form)
         {
+            if (form != null)
+            {
+                LastForm = form;
+            }
+            _timer = new Timer();
+            _timer.Enabled = true;
+            _timer.Interval = 30000;
+            _timer.Tick += timer_Ticked;
+            _timer.Start();
+        }
+
+        //public void AddHandler(EventHandler h)
+        //{
+        //    handlers.Add(h);
+        //    RestartTimer();
+        //    h.DynamicInvoke();
+        //}
+        
+        public static void RestartTimer(Form form = null)
+        {
+            if (form != null)
+            {
+                LastForm = form;
+            }
             _timer.Stop();
             _timer.Start();
         }
 
-        public Actionless()
+        private static void timer_Ticked(object sender, EventArgs e)
         {
-            _timer = new Timer();
-            _timer.Enabled = true;
-            _timer.Interval = 30000;
-            _timer.Start();
+            Security.LogOut();
             
-        }
-
-        private void StartObserve()
-        {
-            _activeForm = GetActiveForm();
-        }
-
-        private Form GetActiveForm()
-        {
-            Form[] forms = Application.OpenForms.Cast<Form>().ToArray();
-            foreach (Form f in  forms)
-            {
-                if (f.Focused)
-                {
-                    return f;
-                }
-            }
-            return null;
-        }
-
-        public void ChangeForm()
-        {
-            
-        }
-
-        private void action_happend(object sender, EventArgs e)
-        {
-            RestartTimer();
         }
     }
 }
